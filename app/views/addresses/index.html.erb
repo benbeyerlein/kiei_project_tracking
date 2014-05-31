@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Addresses</h1>
+</div>
+
+<p><a href="/addresses/new" class="btn btn-primary">Add a New Address</a></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Address line1</th>
+      <th>Address line2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.address_line1 %></td>
+        <td><%= address.address_line2 %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state %></td>
+        <td><%= address.zip %></td>
+        <td>
+          <a href="/addresses/<%= address.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/addresses/<%= address.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/delete_address/<%= address.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

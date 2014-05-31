@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>Package #<%= @package.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Sender name</dt>
+  <dd><%= @package.sender_name %></dd>
+
+  <dt>Send date</dt>
+  <dd><%= @package.send_date %></dd>
+
+  <dt>Notes</dt>
+  <dd><%= @package.notes %></dd>
+
+  <dt>Carrier</dt>
+  <dd><%= @package.carrier_id %></dd>
+
+  <dt>Tracking number</dt>
+  <dd><%= @package.tracking_number %></dd>
+
+  <dt>Delivery type</dt>
+  <dd><%= @package.delivery_type_id %></dd>
+
+  <dt>User</dt>
+  <dd><%= @package.user_id %></dd>
+
+  <dt>Tracking number status</dt>
+  <dd><%= @package.tracking_number_status_id %></dd>
+
+</dl>

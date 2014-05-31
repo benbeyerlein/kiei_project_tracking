@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Delivery Type #<%= @delivery_type.id %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Carrier</dt>
+  <dd><%= @delivery_type.carrier_id %></dd>
+
+  <dt>Delivery type</dt>
+  <dd><%= @delivery_type.delivery_type %></dd>
+
+  <dt>Tracking number format</dt>
+  <dd><%= @delivery_type.tracking_number_format %></dd>
+
+  <dt>Tracking number checksum</dt>
+  <dd><%= @delivery_type.tracking_number_checksum %></dd>
+
+</dl>

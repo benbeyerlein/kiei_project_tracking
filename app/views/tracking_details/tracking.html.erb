@@ -1,0 +1,17 @@
+<h1>Tracking Detail</h1>
+
+
+<table>
+  <% @tracking_details.each do |tracking_detail| %>
+    <tr>
+      <td><%= tracking_detail.package_id %></td>
+      <td><%= tracking_detail.activity_datetime %></td>
+      <td><%= tracking_detail.city %></td>
+      <td><%= tracking_detail.state %></td>
+      <td><%= tracking_detail.zip %></td>
+      <td><%= tracking_detail.activity_note %></td>
+    </tr>
+  <% end %>
+
+
+</table>

@@ -1,5 +1,7 @@
 class Package < ActiveRecord::Base
 
+  validates :tracking_number, uniqueness: true
+
   belongs_to :user
   belongs_to :carrier
 

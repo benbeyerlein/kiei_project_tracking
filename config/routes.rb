@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   get('/create_tracking_detail', { :controller => 'tracking_details', :action => 'create' })
 
   # READ
+  get('/tracking_details/track', { :controller => 'tracking_details', :action => 'tracking' })
+
   get('/tracking_details', { :controller => 'tracking_details', :action => 'index' })
   get('/tracking_details/:id', { :controller => 'tracking_details', :action => 'show' })
+
 
   # UPDATE
   get('/tracking_details/:id/edit', { :controller => 'tracking_details', :action => 'edit' })

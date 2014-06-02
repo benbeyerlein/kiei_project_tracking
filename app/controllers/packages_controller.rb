@@ -1,4 +1,7 @@
 class PackagesController < ApplicationController
+
+
+
   def index
     @packages = Package.all
   end
@@ -11,6 +14,11 @@ class PackagesController < ApplicationController
     @package = Package.new
   end
 
+  def track
+    @package = Package.new
+  end
+
+
   def create
     @package = Package.new
     @package.sender_name = params[:sender_name]
@@ -19,7 +27,7 @@ class PackagesController < ApplicationController
     @package.carrier_id = params[:carrier_id]
     @package.tracking_number = params[:tracking_number]
     @package.delivery_type_id = params[:delivery_type_id]
-    @package.user_id = params[:user_id]
+    @package.user_id = current_user.id #params[:user_id]
     @package.tracking_number_status_id = params[:tracking_number_status_id]
 
     if @package.save

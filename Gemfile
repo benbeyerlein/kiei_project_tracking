@@ -45,3 +45,6 @@ gem 'starter_generators', :git => "git://github.com/rbetina/starter_generators.g
 
 # Authentication
 gem 'devise'
+
+gem 'active_shipping'
+

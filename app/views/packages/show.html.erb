@@ -13,18 +13,45 @@
   <dd><%= @package.notes %></dd>
 
   <dt>Carrier</dt>
-  <dd><%= @package.carrier_id %></dd>
+  <dd><%= @package.carrier.name %></dd>
 
   <dt>Tracking number</dt>
   <dd><%= @package.tracking_number %></dd>
 
   <dt>Delivery type</dt>
-  <dd><%= @package.delivery_type_id %></dd>
+  <dd><%= @package.carrier.delivery_types.first.delivery_type %></dd>
 
   <dt>User</dt>
-  <dd><%= @package.user_id %></dd>
+  <dd><%= @package.user.email %></dd>
 
   <dt>Tracking number status</dt>
-  <dd><%= @package.tracking_number_status_id %></dd>
+  <dd><%= @package.tracking_number_status.status %></dd>
 
 </dl>
+
+<h2>Tracking Detail</h2>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Event datetime</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Event</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @package.tracking_details.each do |tracking_detail| %>
+      <tr>
+        <td><%= tracking_detail.activity_datetime.to_s(:long) %></td>
+        <td><%= tracking_detail.city.titleize %></td>
+        <td><%= tracking_detail.state %></td>
+        <td><%= tracking_detail.zip %></td>
+        <td><%= tracking_detail.activity_note.titleize.gsub(/Usps/, "USPS") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

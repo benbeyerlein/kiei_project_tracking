@@ -1,6 +1,6 @@
 require "temboo"
 require "Library/USPS"
-require 'nokogiri'
+#require 'nokogiri'
 require 'open-uri'
 
 
@@ -39,10 +39,10 @@ class XMLExample
       document = REXML::Document.new(trackConfirmFieldsResults.get_Response())
       #puts document
 
-      result = REXML::XPath.each(document, "//TrackSummary") { |info| puts info.text }
+      condition = REXML::XPath.each(document, "//TrackResponse") { |info| puts info.text }
       # Salient information about the condition are stored in its attributes. Get a hash of them.
       #attributes = condition.attributes()
-      puts result
+      puts condition
 
 
     end

@@ -3,6 +3,11 @@
 
 class PackagesController < ApplicationController
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 162d8530daf8c5f6877890297518b5b0da423143
   def index
     @packages = Package.all
   end

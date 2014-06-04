@@ -27,6 +27,9 @@
   <dt>Tracking number status</dt>
   <dd><%= @package.tracking_number_status.status %></dd>
 
+  <dt>Package Status</dt>
+  <dd><%= @package.tracking_details.last.activity_note.titleize.gsub(/Usps/, "USPS") %></dd>
+
 </dl>
 
 <h2>Tracking Detail</h2>

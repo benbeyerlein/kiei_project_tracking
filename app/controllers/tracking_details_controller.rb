@@ -1,6 +1,3 @@
-# require 'active_shipping'
-# include ActiveMerchant::Shipping
-=======
 require 'active_shipping'
 include ActiveMerchant::Shipping
 
@@ -63,7 +60,7 @@ class TrackingDetailsController < ApplicationController
   end
 
   def tracking
-<<<<<<< HEAD
+
     usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
     tracking_info = usps.find_tracking_info('9405510200986253264474')
 
@@ -80,7 +77,6 @@ class TrackingDetailsController < ApplicationController
       @tracking_detail.save
 
     end
-=======
     # usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
     # tracking_info = usps.find_tracking_info('9405510200986253264474')
 
@@ -97,7 +93,6 @@ class TrackingDetailsController < ApplicationController
     #   @tracking_detail.save
 
     # end
->>>>>>> 162d8530daf8c5f6877890297518b5b0da423143
 
     @tracking_details = TrackingDetail.where(package_id: 2)
 

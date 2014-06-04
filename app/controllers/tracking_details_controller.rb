@@ -1,5 +1,5 @@
-require 'active_shipping'
-include ActiveMerchant::Shipping
+# require 'active_shipping'
+# include ActiveMerchant::Shipping
 
 class TrackingDetailsController < ApplicationController
   def index

@@ -14,6 +14,27 @@ class PackagesController < ApplicationController
 
   def show
     @package = Package.find(params[:id])
+
+    @origin_zip = @package.tracking_details.first.zip
+    @last_zip = @package.tracking_details.last.zip
+
+    size = @package.tracking_details.count
+    puts size
+
+    if size > 2
+      @waypoint_zips = "&waypoints="
+
+      @package.tracking_details.each_with_index do |tracking_detail, index|
+        if index > 1 && index < (size - 1)
+          @waypoint_zips = @waypoint_zips + tracking_detail.zip + "|"
+        end
+      end
+      len = @waypoint_zips.length - 1
+      @waypoint_zips = @waypoint_zips.truncate(len, omission: "")
+    else
+      @waypoint_zips = ""
+    end
+
   end
 
   def new

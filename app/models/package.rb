@@ -11,7 +11,7 @@ class Package < ActiveRecord::Base
   require 'active_shipping'
   include ActiveMerchant::Shipping
 
-   def track(tracking_number)
+   def self.track(tracking_number)
 
     usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
     tracking_info = usps.find_tracking_info("#{tracking_number}")

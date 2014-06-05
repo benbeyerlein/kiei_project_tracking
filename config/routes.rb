@@ -97,6 +97,8 @@ Rails.application.routes.draw do
   # READ
   get('/my_packages', { :controller => 'packages', :action => 'my_packages' })
 
+  get('/packages/track/:id', { :controller => 'packages', :action => 'track' })
+
   get('/packages', { :controller => 'packages', :action => 'index' })
   get('/packages/:id', { :controller => 'packages', :action => 'show' })
 

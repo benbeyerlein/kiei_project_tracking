@@ -40,6 +40,7 @@ class PackagesController < ApplicationController
 
   def track
     @package = Package.new
+    Package.track(params[:id])
   end
 
   # require 'active_shipping'

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'packages#index'
+  root 'packages#my_packages'
   # Routes for the Address resource:
   # CREATE
   get('/addresses/new', { :controller => 'addresses', :action => 'new' })
@@ -95,7 +95,7 @@ Rails.application.routes.draw do
   get('/create_package', { :controller => 'packages', :action => 'create' })
 
   # READ
-  get('/my_packages', { :controller => 'packages', :action => 'home' })
+  get('/my_packages', { :controller => 'packages', :action => 'my_packages' })
 
   get('/packages', { :controller => 'packages', :action => 'index' })
   get('/packages/:id', { :controller => 'packages', :action => 'show' })

@@ -3,7 +3,8 @@
 
 class PackagesController < ApplicationController
 
-  def home
+  def my_packages
+    @package = Package.new
     @packages = Package.where(:user_id => current_user.id)
   end
 
@@ -36,6 +37,7 @@ class PackagesController < ApplicationController
     @package.tracking_number_status_id = params[:tracking_number_status_id]
 
     if @package.save
+      #ALLOW DETAILS TO BE RETRIEVED EVEN IF PACKAGE ALREADY EXISTS OR GET UPDATED INFO?
 
       # Get tracking Detail and put it into the Tracking_Detail table
       # usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')

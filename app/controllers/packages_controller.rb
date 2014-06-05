@@ -1,6 +1,3 @@
-  # require 'active_shipping'
-  # include ActiveMerchant::Shipping
-
 class PackagesController < ApplicationController
 
   def my_packages
@@ -45,6 +42,8 @@ class PackagesController < ApplicationController
     @package = Package.new
   end
 
+  # require 'active_shipping'
+  # include ActiveMerchant::Shipping
 
   def create
     @package = Package.new

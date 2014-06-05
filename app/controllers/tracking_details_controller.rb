@@ -1,6 +1,3 @@
-# require 'active_shipping'
-# include ActiveMerchant::Shipping
-
 class TrackingDetailsController < ApplicationController
   def index
     @tracking_details = TrackingDetail.all
@@ -59,22 +56,25 @@ class TrackingDetailsController < ApplicationController
     redirect_to "/tracking_details", :notice => "Tracking detail deleted."
   end
 
+  require 'active_shipping'
+  include ActiveMerchant::Shipping
+
   def tracking
 
     usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
-    tracking_info = usps.find_tracking_info('9405510200986253264474')
+    tracking_info = usps.find_tracking_info('9274899998442501326173')
 
     tracking_info.shipment_events.each do |event|
       puts "#{event.name} at #{event.location.city}, #{event.location.state} #{event.location.zip} on #{event.time}. #{event.message}"
 
-      @tracking_detail = TrackingDetail.new
-      @tracking_detail.package_id = 2
-      @tracking_detail.activity_datetime = event.time
-      @tracking_detail.city = event.location.city
-      @tracking_detail.state = event.location.state
-      @tracking_detail.zip = event.location.zip
-      @tracking_detail.activity_note = event.name
-      @tracking_detail.save
+      # @tracking_detail = TrackingDetail.new
+      # @tracking_detail.package_id = 2
+      # @tracking_detail.activity_datetime = event.time
+      # @tracking_detail.city = event.location.city
+      # @tracking_detail.state = event.location.state
+      # @tracking_detail.zip = event.location.zip
+      # @tracking_detail.activity_note = event.name
+      # @tracking_detail.save
 
     end
     # usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')

@@ -3,6 +3,10 @@
 
 class PackagesController < ApplicationController
 
+  def home
+    @packages = Package.where(:user_id => current_user.id)
+  end
+
   def index
     @packages = Package.all
   end

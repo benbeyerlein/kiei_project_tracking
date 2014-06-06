@@ -8,7 +8,12 @@
 
 Address.create(address_line1: '340 E Superior St.', address_line2: '', city: 'Chicago', state: 'IL', zip: '60611')
 Courier.create(name: 'USPS')
-DeliveryType.create(courier_id: 1, delivery_type: 'Priority Two-Day', tracking_number_format: '123456789', tracking_number_checksum: 'pattern')
+Courier.create(name: 'FedEx')
+Courier.create(name: 'UPS')
+DeliveryType.create(courier_id: 1, delivery_type: 'Package', tracking_number_format: '123456789', tracking_number_checksum: 'pattern')
+DeliveryType.create(courier_id: 2, delivery_type: 'Package', tracking_number_format: '123456789', tracking_number_checksum: 'pattern')
+DeliveryType.create(courier_id: 3, delivery_type: 'Package', tracking_number_format: '123456789', tracking_number_checksum: 'pattern')
+
 Shipment.create(sender_name: 'Amazon.com', send_date: Date.strptime('05/19/2014','%m/%d/%Y'), notes: 'from seed file', courier_id: 1, tracking_number: '9405510200986253264474', delivery_type_id: 1, user_id: 1, tracking_number_status_id: 1)
 
 TrackingDetail.create(shipment_id: 1, activity_datetime: DateTime.strptime("05/19/2014 12:27", "%m/%d/%Y %H:%M"), city: 'Milton', state: 'WI', zip: '53563', activity_note: 'Acceptance')

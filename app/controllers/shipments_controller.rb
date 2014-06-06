@@ -56,8 +56,17 @@ class ShipmentsController < ApplicationController
     @shipment.user_id = current_user.id #params[:user_id]
     @shipment.tracking_number_status_id = params[:tracking_number_status_id]
 
+    # Check validity of USPS tracking #
+    check = Shipment.checkusps("#{params[:tracking_number]}")
+
+    if check == 0 # not a valid tracking number, so don't save or get the tracking detail
+      puts "tracking number IS NOT VALID"
+      redirect_to "/my_shipments", :alert => "Tracking Number is not valid.  No information saved."
+      return
+    end
+
+
     if @shipment.save
-      #ALLOW DETAILS TO BE RETRIEVED EVEN IF PACKAGE ALREADY EXISTS OR GET UPDATED INFO?
 
       # Get tracking Detail and put it into the Tracking_Detail table
       usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
@@ -79,7 +88,6 @@ class ShipmentsController < ApplicationController
         @tracking_detail.save
 
       end
-
 
       redirect_to "/my_shipments", :notice => "Shipment created successfully."
     else
@@ -103,6 +111,15 @@ class ShipmentsController < ApplicationController
     @shipment.user_id = params[:user_id]
     @shipment.tracking_number_status_id = params[:tracking_number_status_id]
 
+    # Check validity of USPS tracking #
+    check = Shipment.checkusps("#{params[:tracking_number]}")
+
+    if check == 0 # not a valid tracking number, so don't save or get the tracking detail
+      puts "tracking number IS NOT VALID"
+      redirect_to "/shipments", :alert => "Tracking Number is not valid.  No information saved."
+      return
+    end
+
     if @shipment.save
       redirect_to "/shipments", :notice => "Shipment updated successfully."
     else
@@ -117,4 +134,5 @@ class ShipmentsController < ApplicationController
 
     redirect_to "/shipments", :notice => "Shipment deleted."
   end
+
 end

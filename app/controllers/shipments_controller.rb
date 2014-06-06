@@ -81,7 +81,7 @@ class ShipmentsController < ApplicationController
       end
 
 
-      redirect_to "/shipments", :notice => "Shipment created successfully."
+      redirect_to "/my_shipments", :notice => "Shipment created successfully."
     else
       render 'new'
     end

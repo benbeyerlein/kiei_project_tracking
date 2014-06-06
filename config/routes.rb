@@ -97,15 +97,8 @@ Rails.application.routes.draw do
   # READ
   get('/my_shipments', { :controller => 'shipments', :action => 'my_shipments' })
 
-<<<<<<< HEAD
   get('/shipments', { :controller => 'shipments', :action => 'index' })
   get('/shipments/:id', { :controller => 'shipments', :action => 'show' })
-=======
-  get('/packages/track/:id', { :controller => 'packages', :action => 'track' })
-
-  get('/packages', { :controller => 'packages', :action => 'index' })
-  get('/packages/:id', { :controller => 'packages', :action => 'show' })
->>>>>>> 936349b37835c423e311ac0ac2bebce1c4df01cc
 
   # UPDATE
   get('/shipments/:id/edit', { :controller => 'shipments', :action => 'edit' })

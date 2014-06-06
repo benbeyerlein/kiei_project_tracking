@@ -7,7 +7,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Carrier</th>
+      <th>Courier</th>
       <th>Delivery type</th>
       <th>Tracking number format</th>
       <th>Tracking number checksum</th>
@@ -20,7 +20,7 @@
   <tbody>
     <% @delivery_types.each do |delivery_type| %>
       <tr>
-        <td><%= delivery_type.carrier_id %></td>
+        <td><%= delivery_type.courier_id %></td>
         <td><%= delivery_type.delivery_type %></td>
         <td><%= delivery_type.tracking_number_format %></td>
         <td><%= delivery_type.tracking_number_checksum %></td>

@@ -1,9 +1,9 @@
 <div class="page-header">
-  <h1>Add Package</h1>
+  <h1>Add Shipment</h1>
 </div>
 
-<% if @package.errors.any? %>
-  <% @package.errors.full_messages.each do |message| %>
+<% if @shipment.errors.any? %>
+  <% @shipment.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -12,14 +12,14 @@
 <% end %>
 
 
-<form action="/create_package" class="form-horizontal">
+<form action="/create_shipment" class="form-horizontal">
   <!-- Label and input for sender_name -->
   <div class="form-group">
     <label for="sender_name" class="col-sm-2 control-label">
       Sender name
     </label>
     <div class="col-sm-10">
-      <input type="text" id="sender_name" name="sender_name" placeholder="Sender name" class="form-control" value="<%= @package.sender_name %>">
+      <input type="text" id="sender_name" name="sender_name" placeholder="Sender name" class="form-control" value="<%= @shipment.sender_name %>">
     </div>
   </div>
 
@@ -29,7 +29,7 @@
       Date Sent (YYYY-MM-DD)
     </label>
     <div class="col-sm-10">
-      <input type="text" id="send_date" name="send_date" placeholder="YYYY-MM-DD" class="form-control" value="<%= @package.send_date %>">
+      <input type="text" id="send_date" name="send_date" placeholder="YYYY-MM-DD" class="form-control" value="<%= @shipment.send_date %>">
     </div>
   </div>
 
@@ -39,20 +39,20 @@
       Notes
     </label>
     <div class="col-sm-10">
-      <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"><%= @package.notes %></textarea>
+      <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"><%= @shipment.notes %></textarea>
     </div>
   </div>
 
-  <!-- Label and input for carrier_id -->
+  <!-- Label and input for courier_id -->
   <div class="form-group">
-    <label for="carrier_id" class="col-sm-2 control-label">
-      Carrier
+    <label for="courier_id" class="col-sm-2 control-label">
+      Courier
     </label>
     <div class="col-sm-10">
-      <select name="carrier_id" class="form-control">
-        <% Carrier.all.each do |carrier| %>
-          <option value="<%= carrier.id %>">
-            <%= carrier.name %>
+      <select name="courier_id" class="form-control">
+        <% Courier.all.each do |courier| %>
+          <option value="<%= courier.id %>">
+            <%= courier.name %>
           </option>
         <% end %>
       </select>
@@ -65,7 +65,7 @@
       Tracking number
     </label>
     <div class="col-sm-10">
-      <input type="text" id="tracking_number" name="tracking_number" placeholder="Tracking number" class="form-control" value="<%= @package.tracking_number %>">
+      <input type="text" id="tracking_number" name="tracking_number" placeholder="Tracking number" class="form-control" value="<%= @shipment.tracking_number %>">
     </div>
   </div>
 
@@ -76,7 +76,7 @@
     </label>
     <div class="col-sm-10">
       <select name="delivery_type_id" class="form-control">
-        <% dt =  DeliveryType.find_by(:carrier_id => 1) %> <!-- Temporary hack -->
+        <% dt =  DeliveryType.find_by(:courier_id => 1) %> <!-- Temporary hack -->
           <option value="<%= dt.id %>">
             <%= dt.delivery_type %>
           </option>
@@ -108,7 +108,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <input type="submit" value="Create Package" class="btn btn-primary">
+      <input type="submit" value="Create Shipment" class="btn btn-primary">
     </div>
   </div>
 </form>

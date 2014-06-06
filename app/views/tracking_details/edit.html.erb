@@ -12,13 +12,13 @@
 <% end %>
 
 <form action="/update_tracking_detail/<%= @tracking_detail.id %>" class="form-horizontal">
-  <!-- Label and input for package_id -->
+  <!-- Label and input for shipment_id -->
   <div class="form-group">
-    <label for="package_id" class="col-sm-2 control-label">
-      Package
+    <label for="shipment_id" class="col-sm-2 control-label">
+      Shipment
     </label>
     <div class="col-sm-10">
-      <input type="text" id="package_id" name="package_id" placeholder="Package" class="form-control" value="<%= @tracking_detail.package_id %>">
+      <input type="text" id="shipment_id" name="shipment_id" placeholder="Shipment" class="form-control" value="<%= @tracking_detail.shipment_id %>">
     </div>
   </div>
 

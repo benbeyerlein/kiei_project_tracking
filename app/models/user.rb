@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
 
   has_many :addresses
-  has_many :packages
+  has_many :shipments
 
 end

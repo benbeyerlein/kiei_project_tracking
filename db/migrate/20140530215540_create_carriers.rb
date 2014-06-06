@@ -1,6 +1,6 @@
-class CreateCarriers < ActiveRecord::Migration
+class CreateCouriers < ActiveRecord::Migration
   def change
-    create_table :carriers do |t|
+    create_table :couriers do |t|
       t.string :name
 
       t.timestamps

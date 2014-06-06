@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530215640) do
+ActiveRecord::Schema.define(version: 20140606025656) do
 
   create_table "addresses", force: true do |t|
     t.string   "address_line1"
@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 20140530215640) do
     t.datetime "updated_at"
   end
 
-  create_table "carriers", force: true do |t|
+  create_table "couriers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "delivery_types", force: true do |t|
-    t.integer  "carrier_id"
+    t.integer  "courier_id"
     t.string   "delivery_type"
     t.string   "tracking_number_format"
     t.string   "tracking_number_checksum"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20140530215640) do
     t.datetime "updated_at"
   end
 
-  create_table "packages", force: true do |t|
+  create_table "shipments", force: true do |t|
     t.string   "sender_name"
     t.date     "send_date"
     t.text     "notes"
-    t.integer  "carrier_id"
+    t.integer  "courier_id"
     t.string   "tracking_number"
     t.integer  "delivery_type_id"
     t.integer  "user_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20140530215640) do
   end
 
   create_table "tracking_details", force: true do |t|
-    t.integer  "package_id"
+    t.integer  "shipment_id"
     t.datetime "activity_datetime"
     t.string   "city"
     t.string   "state"

@@ -1,34 +1,34 @@
 <div class="page-header">
-  <h1>Package #<%= @package.id %></h1>
+  <h1>Shipment #<%= @shipment.id %></h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt>Sender name</dt>
-  <dd><%= @package.sender_name %></dd>
+  <dd><%= @shipment.sender_name %></dd>
 
   <dt>Send date</dt>
-  <dd><%= @package.send_date %></dd>
+  <dd><%= @shipment.send_date %></dd>
 
   <dt>Notes</dt>
-  <dd><%= @package.notes %></dd>
+  <dd><%= @shipment.notes %></dd>
 
-  <dt>Carrier</dt>
-  <dd><%= @package.carrier.name %></dd>
+  <dt>Courier</dt>
+  <dd><%= @shipment.courier.name %></dd>
 
   <dt>Tracking number</dt>
-  <dd><%= @package.tracking_number %></dd>
+  <dd><%= @shipment.tracking_number %></dd>
 
   <dt>Delivery type</dt>
-  <dd><%= @package.carrier.delivery_types.first.delivery_type %></dd>
+  <dd><%= @shipment.courier.delivery_types.first.delivery_type %></dd>
 
   <dt>User</dt>
-  <dd><%= @package.user.email %></dd>
+  <dd><%= @shipment.user.email %></dd>
 
   <dt>Tracking number status</dt>
-  <dd><%= @package.tracking_number_status.status %></dd>
+  <dd><%= @shipment.tracking_number_status.status %></dd>
 
-  <dt>Package Status</dt>
-  <dd><%= @package.tracking_details.last.activity_note.titleize.gsub(/Usps/, "USPS") %></dd>
+  <dt>Shipment Status</dt>
+  <dd><%= @shipment.tracking_details.last.activity_note.titleize.gsub(/Usps/, "USPS") %></dd>
 
 </dl>
 
@@ -47,7 +47,7 @@
   </thead>
 
   <tbody>
-    <% @package.tracking_details.each do |tracking_detail| %>
+    <% @shipment.tracking_details.each do |tracking_detail| %>
       <tr>
         <td><%= tracking_detail.activity_datetime.to_s(:long) %></td>
         <td><%= tracking_detail.city.titleize %></td>
@@ -60,7 +60,7 @@
 </table>
 
 <div>
-  <h2>Package Route</h2>
+  <h2>Shipment Route</h2>
 </div>
 
 <div>

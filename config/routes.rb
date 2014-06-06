@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'packages#my_packages'
+  root 'shipments#my_shipments'
   # Routes for the Address resource:
   # CREATE
   get('/addresses/new', { :controller => 'addresses', :action => 'new' })
@@ -72,42 +72,47 @@ Rails.application.routes.draw do
   get('/delete_tracking_number_status/:id', { :controller => 'tracking_number_statuses', :action => 'destroy' })
   #------------------------------
 
-  # Routes for the Carrier resource:
+  # Routes for the Courier resource:
   # CREATE
-  get('/carriers/new', { :controller => 'carriers', :action => 'new' })
-  get('/create_carrier', { :controller => 'carriers', :action => 'create' })
+  get('/couriers/new', { :controller => 'couriers', :action => 'new' })
+  get('/create_courier', { :controller => 'couriers', :action => 'create' })
 
   # READ
-  get('/carriers', { :controller => 'carriers', :action => 'index' })
-  get('/carriers/:id', { :controller => 'carriers', :action => 'show' })
+  get('/couriers', { :controller => 'couriers', :action => 'index' })
+  get('/couriers/:id', { :controller => 'couriers', :action => 'show' })
 
   # UPDATE
-  get('/carriers/:id/edit', { :controller => 'carriers', :action => 'edit' })
-  get('/update_carrier/:id', { :controller => 'carriers', :action => 'update' })
+  get('/couriers/:id/edit', { :controller => 'couriers', :action => 'edit' })
+  get('/update_courier/:id', { :controller => 'couriers', :action => 'update' })
 
   # DELETE
-  get('/delete_carrier/:id', { :controller => 'carriers', :action => 'destroy' })
+  get('/delete_courier/:id', { :controller => 'couriers', :action => 'destroy' })
   #------------------------------
 
-  # Routes for the Package resource:
+  # Routes for the Shipment resource:
   # CREATE
-  get('/packages/new', { :controller => 'packages', :action => 'new' })
-  get('/create_package', { :controller => 'packages', :action => 'create' })
+  get('/shipments/new', { :controller => 'shipments', :action => 'new' })
+  get('/create_shipment', { :controller => 'shipments', :action => 'create' })
 
   # READ
-  get('/my_packages', { :controller => 'packages', :action => 'my_packages' })
+  get('/my_shipments', { :controller => 'shipments', :action => 'my_shipments' })
 
+<<<<<<< HEAD
+  get('/shipments', { :controller => 'shipments', :action => 'index' })
+  get('/shipments/:id', { :controller => 'shipments', :action => 'show' })
+=======
   get('/packages/track/:id', { :controller => 'packages', :action => 'track' })
 
   get('/packages', { :controller => 'packages', :action => 'index' })
   get('/packages/:id', { :controller => 'packages', :action => 'show' })
+>>>>>>> 936349b37835c423e311ac0ac2bebce1c4df01cc
 
   # UPDATE
-  get('/packages/:id/edit', { :controller => 'packages', :action => 'edit' })
-  get('/update_package/:id', { :controller => 'packages', :action => 'update' })
+  get('/shipments/:id/edit', { :controller => 'shipments', :action => 'edit' })
+  get('/update_shipment/:id', { :controller => 'shipments', :action => 'update' })
 
   # DELETE
-  get('/delete_package/:id', { :controller => 'packages', :action => 'destroy' })
+  get('/delete_shipment/:id', { :controller => 'shipments', :action => 'destroy' })
   #------------------------------
 
   # The priority is based upon order of creation: first created -> highest priority.

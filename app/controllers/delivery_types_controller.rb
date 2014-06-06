@@ -13,7 +13,7 @@ class DeliveryTypesController < ApplicationController
 
   def create
     @delivery_type = DeliveryType.new
-    @delivery_type.carrier_id = params[:carrier_id]
+    @delivery_type.courier_id = params[:courier_id]
     @delivery_type.delivery_type = params[:delivery_type]
     @delivery_type.tracking_number_format = params[:tracking_number_format]
     @delivery_type.tracking_number_checksum = params[:tracking_number_checksum]
@@ -32,7 +32,7 @@ class DeliveryTypesController < ApplicationController
   def update
     @delivery_type = DeliveryType.find(params[:id])
 
-    @delivery_type.carrier_id = params[:carrier_id]
+    @delivery_type.courier_id = params[:courier_id]
     @delivery_type.delivery_type = params[:delivery_type]
     @delivery_type.tracking_number_format = params[:tracking_number_format]
     @delivery_type.tracking_number_checksum = params[:tracking_number_checksum]

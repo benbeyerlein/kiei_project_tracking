@@ -1,5 +1,5 @@
 class TrackingNumberStatus < ActiveRecord::Base
 
-  belongs_to :package
+  belongs_to :shipment
 
 end

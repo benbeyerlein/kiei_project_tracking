@@ -4,7 +4,7 @@
 <table>
   <% @tracking_details.each do |tracking_detail| %>
     <tr>
-      <td><%= tracking_detail.package_id %></td>
+      <td><%= tracking_detail.shipment_id %></td>
       <td><%= tracking_detail.activity_datetime %></td>
       <td><%= tracking_detail.city %></td>
       <td><%= tracking_detail.state %></td>

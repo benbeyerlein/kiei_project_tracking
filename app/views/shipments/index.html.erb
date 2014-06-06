@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>Shipments</h1>
+</div>
+
+<p><a href="/shipments/new" class="btn btn-primary">Add a New Shipment</a></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Sender name</th>
+      <th>Send date</th>
+      <th>Notes</th>
+      <th>Courier</th>
+      <th>Tracking number</th>
+      <th>Delivery type</th>
+      <th>User</th>
+      <th>Tracking number status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shipments.each do |shipment| %>
+      <tr>
+        <td><%= shipment.sender_name %></td>
+        <td><%= shipment.send_date %></td>
+        <td><%= shipment.notes %></td>
+        <td><%= shipment.courier_id %></td>
+        <td><%= shipment.tracking_number %></td>
+        <td><%= shipment.delivery_type_id %></td>
+        <td><%= shipment.user_id %></td>
+        <td><%= shipment.tracking_number_status_id %></td>
+        <td>
+          <a href="/shipments/<%= shipment.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/shipments/<%= shipment.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="/delete_shipment/<%= shipment.id %>" class="btn btn-danger">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

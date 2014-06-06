@@ -13,7 +13,7 @@ class TrackingDetailsController < ApplicationController
 
   def create
     @tracking_detail = TrackingDetail.new
-    @tracking_detail.package_id = params[:package_id]
+    @tracking_detail.shipment_id = params[:shipment_id]
     @tracking_detail.activity_datetime = params[:activity_datetime]
     @tracking_detail.city = params[:city]
     @tracking_detail.state = params[:state]
@@ -34,7 +34,7 @@ class TrackingDetailsController < ApplicationController
   def update
     @tracking_detail = TrackingDetail.find(params[:id])
 
-    @tracking_detail.package_id = params[:package_id]
+    @tracking_detail.shipment_id = params[:shipment_id]
     @tracking_detail.activity_datetime = params[:activity_datetime]
     @tracking_detail.city = params[:city]
     @tracking_detail.state = params[:state]
@@ -68,7 +68,7 @@ class TrackingDetailsController < ApplicationController
       puts "#{event.name} at #{event.location.city}, #{event.location.state} #{event.location.zip} on #{event.time}. #{event.message}"
 
       # @tracking_detail = TrackingDetail.new
-      # @tracking_detail.package_id = 2
+      # @tracking_detail.shipment_id = 2
       # @tracking_detail.activity_datetime = event.time
       # @tracking_detail.city = event.location.city
       # @tracking_detail.state = event.location.state
@@ -84,7 +84,7 @@ class TrackingDetailsController < ApplicationController
     #   puts "#{event.name} at #{event.location.city}, #{event.location.state} #{event.location.zip} on #{event.time}. #{event.message}"
 
     #   @tracking_detail = TrackingDetail.new
-    #   @tracking_detail.package_id = 2
+    #   @tracking_detail.shipment_id = 2
     #   @tracking_detail.activity_datetime = event.time
     #   @tracking_detail.city = event.location.city
     #   @tracking_detail.state = event.location.state
@@ -94,7 +94,7 @@ class TrackingDetailsController < ApplicationController
 
     # end
 
-    @tracking_details = TrackingDetail.where(package_id: 2)
+    @tracking_details = TrackingDetail.where(shipment_id: 2)
 
   end
 

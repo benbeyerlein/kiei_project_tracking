@@ -34,6 +34,9 @@ Rails.application.routes.draw do
   get('/tracking_details/:id/edit', { :controller => 'tracking_details', :action => 'edit' })
   get('/update_tracking_detail/:id', { :controller => 'tracking_details', :action => 'update' })
 
+  get('/update_tracking/:tracking_number', { :controller => 'tracking_details', :action => 'update_tracking' })
+
+
   # DELETE
   get('/delete_tracking_detail/:id', { :controller => 'tracking_details', :action => 'destroy' })
   #------------------------------

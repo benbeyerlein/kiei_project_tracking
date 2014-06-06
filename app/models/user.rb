@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :addresses
-  has_many :shipments
+  has_many :addresses #, dependent: :destroy
+  has_many :shipments #, dependent: :destroy
 
 end

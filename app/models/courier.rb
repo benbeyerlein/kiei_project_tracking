@@ -2,7 +2,7 @@ class Courier < ActiveRecord::Base
 
   belongs_to :shipment
 
-  has_many :delivery_types
-  has_many :shipments
+  has_many :delivery_types #, dependent: :destroy
+  has_many :shipments #, dependent: :destroy
 
 end

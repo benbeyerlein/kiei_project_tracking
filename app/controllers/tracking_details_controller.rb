@@ -56,46 +56,34 @@ class TrackingDetailsController < ApplicationController
     redirect_to "/tracking_details", :notice => "Tracking detail deleted."
   end
 
+
   require 'active_shipping'
   include ActiveMerchant::Shipping
 
-  def tracking
+  def update_tracking
 
-    usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
-    tracking_info = usps.find_tracking_info('9274899998442501326173')
+       # Get tracking Detail and put it into the Tracking_Detail table
+      usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
+      tracking_info = usps.find_tracking_info("#{params[:tracking_number]}")
 
-    tracking_info.shipment_events.each do |event|
+      shipment_id = Shipment.find_by(:tracking_number => "#{params[:tracking_number]}").id
+      puts shipment_id
+
+      tracking_info.shipment_events.each do |event|
       puts "#{event.name} at #{event.location.city}, #{event.location.state} #{event.location.zip} on #{event.time}. #{event.message}"
 
-      # @tracking_detail = TrackingDetail.new
-      # @tracking_detail.shipment_id = 2
-      # @tracking_detail.activity_datetime = event.time
-      # @tracking_detail.city = event.location.city
-      # @tracking_detail.state = event.location.state
-      # @tracking_detail.zip = event.location.zip
-      # @tracking_detail.activity_note = event.name
-      # @tracking_detail.save
+        @tracking_detail = TrackingDetail.new
+        @tracking_detail.shipment_id = shipment_id
+        @tracking_detail.activity_datetime = event.time
+        @tracking_detail.city = event.location.city
+        @tracking_detail.state = event.location.state
+        @tracking_detail.zip = event.location.zip
+        @tracking_detail.activity_note = event.name
+        @tracking_detail.save
 
-    end
-    # usps = USPS.new(:login => '956INDEP1007', :password => '270MX72FS959')
-    # tracking_info = usps.find_tracking_info('9405510200986253264474')
+      end
 
-    # tracking_info.shipment_events.each do |event|
-    #   puts "#{event.name} at #{event.location.city}, #{event.location.state} #{event.location.zip} on #{event.time}. #{event.message}"
-
-    #   @tracking_detail = TrackingDetail.new
-    #   @tracking_detail.shipment_id = 2
-    #   @tracking_detail.activity_datetime = event.time
-    #   @tracking_detail.city = event.location.city
-    #   @tracking_detail.state = event.location.state
-    #   @tracking_detail.zip = event.location.zip
-    #   @tracking_detail.activity_note = event.name
-    #   @tracking_detail.save
-
-    # end
-
-    @tracking_details = TrackingDetail.where(shipment_id: 2)
-
+      redirect_to "/my_shipments"
   end
 
 end

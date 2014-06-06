@@ -141,7 +141,7 @@
         <% if shipment.tracking_details.last.activity_note.titleize == "Delivered" %>
           <td>Delivered</td>
         <% else %>
-          <td>In Transit <a href="#">Update</a></td>
+          <td>In Transit <a href="/update_tracking/<%= shipment.tracking_number %>">Update</a></td>
         <% end %>
 
       </tr>

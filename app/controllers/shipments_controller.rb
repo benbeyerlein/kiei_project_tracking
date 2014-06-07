@@ -48,7 +48,7 @@ class ShipmentsController < ApplicationController
   def create
     @shipment = Shipment.new
     @shipment.sender_name = params[:sender_name]
-    @shipment.send_date = params[:send_date]
+    @shipment.send_date = Date.strptime("#{params[:send_date]}", "%m/%d/%Y")#params[:send_date]
     @shipment.notes = params[:notes]
     @shipment.courier_id = params[:courier_id]
     @shipment.tracking_number = params[:tracking_number]
